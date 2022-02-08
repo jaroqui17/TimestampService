@@ -36,7 +36,7 @@ app.get("/api/:date?", function (req, res) {
     unixTime = Date.parse(dateObj);
   }
   
-  if(req.params.date == ""){
+  if(req.params.date == null){
     let utcTime = new Date(Date.now()).toUTCString();
     unixTime = Date.parse(utcTime);
     res.json({unix: unixTime, utc: utcTime});
