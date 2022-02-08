@@ -37,13 +37,13 @@ app.get("/api/:date?", function (req, res) {
   }
   
   if(req.params.date == ""){
-    let utcTime = new Date(Date.now()).toString();
+    let utcTime = new Date(Date.now()).toUTCString();
     unixTime = Date.parse(utcTime);
     res.json({unix: unixTime, utc: utcTime});
   }else if(unixTime == NaN){
     res.json({error: "Invalid Date"});
   }else{
-    let utcTime = dateObj.toString();
+    let utcTime = dateObj.toUTCString();
     res.json({unix: unixTime, utc: utcTime});
   }
 });
